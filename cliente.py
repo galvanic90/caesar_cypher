@@ -9,7 +9,7 @@ print("Texto original:", texto_original)
 print("Texto cifrado:", texto_cifrado)
 
 # El cliente debe tener las mismas especificaciones del servidor
-host = config.HOST
+host = config.HOST_CLIENT
 port = config.PORT
 BUFFER_SIZE = config.BUFFER_SIZE
 MESSAGE = texto_cifrado # Datos que queremos enviar
