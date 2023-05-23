@@ -17,7 +17,7 @@ de llamar a socket_close()
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_tcp:
 
     socket_tcp.bind((host, port)) 
-    socket_tcp.listen(5) # Esperamos la conexión del cliente 
+    socket_tcp.listen(80) # Esperamos la conexión del cliente 
     conn, addr = socket_tcp.accept() # Establecemos la conexión con el cliente 
     print(host)
     with conn:
