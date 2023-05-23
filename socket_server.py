@@ -1,9 +1,13 @@
 import socket
+import config
 
+from cifrado import descifrado_cesar
 #host = socket.gethostname() # Esta función nos da el nombre de la máquina
-host = ''
-port = 3000
-BUFFER_SIZE = 1024 # Usamos un número pequeño para tener una respuesta rápida 
+# Usamos un número pequeño para tener una respuesta rápida 
+
+host = config.HOST
+port = config.PORT
+BUFFER_SIZE = config.BUFFER_SIZE
 
 '''Los objetos socket soportan el context manager type
 así que podemos usarlo con una sentencia with, no hay necesidad
@@ -25,6 +29,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_tcp:
             if not data:
                 break
             else:
-                print('[*] Datos recibidos: {}'.format(data.decode('utf-8'))) 
+                msg = data.decode('utf-8')
+                print('[*] Datos recibidos: {}'.format(msg))
+                descifrado_msg = descifrado_cesar(msg, config.CLAVE)
+                print('[*] Mensaje descifrado: {}'.format(descifrado_msg))
             conn.send(data) # Hacemos echo convirtiendo de nuevo a bytes
 
